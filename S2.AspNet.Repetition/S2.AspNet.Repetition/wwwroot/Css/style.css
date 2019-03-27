@@ -88,7 +88,7 @@ section .wrapper {
         section .wrapper article .memeWrapper {
             display: flex;
             flex-wrap: wrap;
-            justify-content:center;
+            justify-content: center;
         }
 
         section .wrapper article .memeSelector {
@@ -100,20 +100,26 @@ section .wrapper {
             }
 
             section .wrapper article .memeSelector input {
-                display:block;
+                display: block;
                 margin-left: auto;
                 margin-right: auto;
             }
 
         section .wrapper article .memeText {
-            margin-top:10px;
+            margin-top: 10px;
         }
 
 section .generatedMeme {
     position: relative;
     text-align: center;
     color: white;
+    margin: auto;
+    width: 30%;
 }
+
+    section .generatedMeme img {
+        width: 100%;
+    }
 
     /* Bottom left text */
     section .generatedMeme .bottom-left {
@@ -132,7 +138,7 @@ section .generatedMeme {
     section .generatedMeme .top-center {
         position: absolute;
         top: 8px;
-        left 50%;
+        left: 50%;
         transform: translate(-50%,-50%);
     }
 

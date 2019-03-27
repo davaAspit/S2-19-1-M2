@@ -1,8 +1,10 @@
 ﻿@page
+@using S2.AspNet.Repetition.Entities
 @model S2.AspNet.Repetition.Pages.IndexModel
 @{
     ViewData["Title"] = "Forside";
     Layout = "~/Pages/Shared/_Layout.cshtml";
+    
 }
 
 <h1>Min første memegenerator</h1>
@@ -10,37 +12,18 @@
     <article>
         <form action="/" method="get">
             <div class="memeWrapper">
-                <div class="memeSelector">
-                    <img src="~/Img/meme1.png" />
-                    <input type="radio" name="imageselected" value="1" checked />
-                </div>
-
-                <div class="memeSelector">
-                    <img src="~/Img/meme1.png" />
-                    <input type="radio" name="imageselected" value="2" />
-                </div>
-
-                <div class="memeSelector">
-                    <img src="~/Img/meme1.png" />
-                    <input type="radio" name="imageselected" value="3" />
-                </div>
-                <div class="memeSelector">
-                    <img src="~/Img/meme1.png" />
-                    <input type="radio" name="imageselected" value="4" />
-                </div>
-
-                <div class="memeSelector">
-                    <img src="~/Img/meme1.png" />
-                    <input type="radio" name="imageselected" value="5" />
-                </div>
-
-                <div class="memeSelector">
-                    <img src="~/Img/meme1.png" />
-                    <input type="radio" name="imageselected" value="6" />
-                </div>
+                @{
+                    foreach (MemeImage img in Model.MemeImages)
+                    {
+                        <div class="memeSelector">
+                            <img src="@img.Url" alt="@img.AltText"/>
+                            <input type="radio" value="@img.Id" name="imageSelected"/>
+                        </div>
+                    }
+                }
             </div>
             <div class="memeSelector memeText">
-                <input type="text" size="50" name="memeText"  placeholder="Skriv din meme text"/>
+                <input type="text" size="50" name="memeText" placeholder="Skriv din meme text" />
                 <input type="submit" value="Generer meme" />
             </div>
         </form>
@@ -50,9 +33,10 @@
 {
     <div class="generatedMeme">
         <img src="@Model.SelectedImageUrl" />
-        <div class="bottom-center">
+        <div class="bottom-left">
             @Model.MemeText
         </div>
+        <p style="color: red; font-size: x-large;">@Model.ErrorMessage</p>
     </div>
 }
 
