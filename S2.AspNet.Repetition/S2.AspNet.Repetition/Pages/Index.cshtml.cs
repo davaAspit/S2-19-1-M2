@@ -32,7 +32,6 @@ namespace S2.AspNet.Repetition.Pages
 
                 //Save the meme in DB
                 SaveMemeInDb();
-
             }
         }
 
