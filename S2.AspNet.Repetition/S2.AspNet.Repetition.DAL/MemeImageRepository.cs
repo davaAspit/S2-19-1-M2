@@ -8,10 +8,6 @@ namespace S2.AspNet.Repetition.DAL
 {
     public class MemeImageRepository : RepositoryBase
     {
-        public MemeImageRepository(string conString) : base(conString)
-        {
-        }
-
         public List<MemeImage> GetAllMemeImages()
         {
             List<MemeImage> memeImages = new List<MemeImage>();

@@ -8,10 +8,6 @@ namespace S2.AspNet.Repetition.DAL
 {
     public class MemeCreationRepository : RepositoryBase
     {
-        public MemeCreationRepository(string conString) : base(conString)
-        {
-        }
-
         public int Insert(MemeCreation memeCreation)
         {
             string sql =

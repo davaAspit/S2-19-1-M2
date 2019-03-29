@@ -1,0 +1,16 @@
+﻿@page
+@model S2.AspNet.Repetition.Pages.CreateMemeModel
+@{
+    ViewData["Title"] = "CreateMeme";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h2>CreateMeme</h2>
+
+<div class="generatedMeme">
+    <img src="@Model.MemeCreation.MemeImage.Url" />
+    <div class="@Model.MemeCreation.Position" style="color: @Model.MemeCreation.Color; font-size: @Model.MemeCreation.Size">
+        @Model.MemeCreation.Text
+    </div>
+</div>
+

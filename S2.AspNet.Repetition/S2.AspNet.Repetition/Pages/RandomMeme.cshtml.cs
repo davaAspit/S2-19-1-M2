@@ -14,7 +14,7 @@ namespace S2.AspNet.Repetition.Pages
         public MemeCreation Meme { get; set; }
         public void OnGet()
         {
-            MemeCreationRepository repo = new MemeCreationRepository(@"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MemeGenerator;Integrated Security=True;");
+            MemeCreationRepository repo = new MemeCreationRepository();
 
             Meme = repo.GetRandomMeme();
 

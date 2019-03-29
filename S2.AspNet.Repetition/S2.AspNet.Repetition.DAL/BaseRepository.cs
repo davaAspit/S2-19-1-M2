@@ -6,16 +6,17 @@ namespace S2.AspNet.Repetition.DAL
 {
     public class RepositoryBase
     {
-        private string connectionString;
+        private string connectionString = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MemeGenerator;Integrated Security=True;";
 
         /// <summary>
         /// Initializes a new instance of the CommonDataAccess class.
-        /// Needs a connection string for the connection.
         /// </summary>
-        /// <param name="conString">Connection string to the database</param>
-        public RepositoryBase(string conString)
+        public RepositoryBase()
         {
-            connectionString = conString;
+            if (string.IsNullOrWhiteSpace(connectionString))
+            {
+                throw new InvalidOperationException("You must set the connectionString field manually!");
+            }
         }
 
         /// <summary>

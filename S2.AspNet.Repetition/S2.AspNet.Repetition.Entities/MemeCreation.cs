@@ -34,7 +34,7 @@ namespace S2.AspNet.Repetition.Entities
 
         public int Id { get; set; }
         public int MemeImageId { get; set; }
-        public MemeImage MemeImage { get; set; }
+        public MemeImage MemeImage { get; set; } = new MemeImage();
         public DateTime CreationTime { get; set; }
         public string Text { get; set; }
         public string Position { get; set; }

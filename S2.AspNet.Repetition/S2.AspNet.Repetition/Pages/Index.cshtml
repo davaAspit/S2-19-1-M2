@@ -1,4 +1,5 @@
 ﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @using S2.AspNet.Repetition.Entities
 @model S2.AspNet.Repetition.Pages.IndexModel
 @{
@@ -10,22 +11,34 @@
 <h1>Min første memegenerator</h1>
 <div class="wrapper">
     <article>
-        <form action="/" method="get">
+        <form action="CreateMeme" method="get">
             <div class="memeWrapper">
                 @{
                     foreach (MemeImage img in Model.MemeImages)
                     {
                         <div class="memeSelector">
                             <img src="@img.Url" alt="@img.AltText"/>
-                            <input type="radio" value="@img.Id" name="imageSelected"/>
+                            <input type="radio" value="@img.Id" name="MemeCreation.MemeImageId"/>
                         </div>
                     }
                 }
             </div>
             <div class="memeSelector memeText">
-                <input type="text" size="50" name="memeText" placeholder="Skriv din meme text" />
+                <input type="text" size="50" name="MemeCreation.Text" placeholder="Skriv din meme text" />
                 <input type="submit" value="Generer meme" />
             </div>
+            <div class="memeSelector">
+                <select name="MemeCreation.Position" asp-items="Model.Positions">
+                    <option value="">Vælg en position</option>
+                </select>
+                <select name="MemeCreation.Color" asp-items="Model.Colors">
+                    <option value="">Vælg en farve</option>
+                </select>
+                <select name="MemeCreation.Size" asp-items="Model.Sizes">
+                    <option value="">Vælg en størrelse</option>
+                </select>
+            </div>
+            
         </form>
     </article>
 </div>

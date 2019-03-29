@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using S2.AspNet.Repetition.DAL;
 using S2.AspNet.Repetition.Entities;
 
@@ -11,8 +12,6 @@ namespace S2.AspNet.Repetition.Pages
 {
     public class IndexModel : PageModel
     {
-        private const string ConString = @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=MemeGenerator;Integrated Security=True;";
-
         [BindProperty(SupportsGet = true)]
         public int ImageSelected { get; set; }
         [BindProperty(SupportsGet = true)]
@@ -20,9 +19,15 @@ namespace S2.AspNet.Repetition.Pages
         public string SelectedImageUrl { get; set; }
         public List<MemeImage> MemeImages { get; set; }
         public string ErrorMessage { get; set; } = "";
+        public List<SelectListItem> Positions { get; set; }
+        public List<SelectListItem> Colors { get; set; }
+        public List<SelectListItem> Sizes { get; set; }
+
+
         public void OnGet()
         {
-            MemeImageRepository repo = new MemeImageRepository(ConString);
+            Initialize();
+            MemeImageRepository repo = new MemeImageRepository();
             MemeImages = repo.GetAllMemeImages();
 
             if (ImageSelected > 0)
@@ -35,9 +40,32 @@ namespace S2.AspNet.Repetition.Pages
             }
         }
 
+        private void Initialize()
+        {
+            Positions = new List<SelectListItem>
+            {
+                new SelectListItem() { Text = "Bunden til venstre", Value = "bottom-left" }
+            };
+
+            Colors = new List<SelectListItem>
+            {
+                new SelectListItem() { Text = "Hvid", Value = "white" },
+                new SelectListItem() { Text = "Sort", Value = "black" },
+                new SelectListItem() { Text = "Grøn", Value = "green" },
+                new SelectListItem() { Text = "Rød", Value = "red" }
+            };
+
+            Sizes = new List<SelectListItem>
+            {
+                new SelectListItem() { Text = "Lille", Value = "small" },
+                new SelectListItem() { Text = "Mellem", Value = "medium" },
+                new SelectListItem() { Text = "Stor", Value = "large" }
+            };
+        }
+
         private void SaveMemeInDb()
         {
-            MemeCreationRepository memeCreateionRepo = new MemeCreationRepository(ConString);
+            MemeCreationRepository memeCreateionRepo = new MemeCreationRepository();
 
             MemeCreation memeCreation = new MemeCreation()
             {
