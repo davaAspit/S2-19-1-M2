@@ -1,0 +1,38 @@
+﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model CourtBooking.Web.Pages.IndexModel
+@{
+    ViewData["Title"] = "Banebooking";
+    Layout = "_Layout";
+    Dictionary<string, string> d = new Dictionary<string, string>()
+    {
+        {"year", DateTime.Now.Date.Year.ToString() },
+        {"month", DateTime.Now.Date.Month.ToString() },
+        {"day", DateTime.Now.Date.Day.ToString() }
+
+    };
+}
+
+<h2>Index</h2>
+<div class="wrapper">
+    <div class="courts">
+        <div class="row">
+            <div class="time">KL. 9</div>
+            <a asp-page="book" asp-all-route-data="d" class="book free">Book nu</a>
+            <a asp-page="book" asp-all-route-data="d" class="book free">Book nu</a>
+            <a asp-page="book" asp-all-route-data="d" class="book free">Book nu</a>
+        </div>
+        <div class="row">
+            <p class="time">KL. 10</p>
+            <a asp-page="book" asp-all-route-data="d" class="book free">Book nu</a>
+            <p class="book taken">2306</p>
+            <p class="book taken">1504</p>
+        </div>
+        <div class="row">
+            <p class="time">KL. 11</p>
+            <p class="book taken">1203</p>
+            <a asp-page="book" asp-all-route-data="d" class="book free">Book nu</a>
+            <a asp-page="book" asp-all-route-data="d" class="book free">Book nu</a>
+        </div>
+    </div>
+</div>
