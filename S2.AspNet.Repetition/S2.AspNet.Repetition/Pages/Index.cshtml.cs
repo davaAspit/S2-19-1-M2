@@ -44,7 +44,9 @@ namespace S2.AspNet.Repetition.Pages
         {
             Positions = new List<SelectListItem>
             {
-                new SelectListItem() { Text = "Bunden til venstre", Value = "bottom-left" }
+                new SelectListItem() { Text = "Bunden til venstre", Value = "bottom-left" },
+                new SelectListItem() { Text = "Bunden til højre", Value = "bottom-right" },
+                new SelectListItem() { Text = "Toppen i midten", Value = "top-center" }
             };
 
             Colors = new List<SelectListItem>

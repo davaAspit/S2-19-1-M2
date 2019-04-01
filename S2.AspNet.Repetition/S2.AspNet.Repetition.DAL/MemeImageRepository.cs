@@ -2,12 +2,49 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 
 namespace S2.AspNet.Repetition.DAL
 {
     public class MemeImageRepository : RepositoryBase
     {
+        public MemeImage GetMostOftenUsedMemeImage()
+        {
+            //Get all MemeCreations
+
+            List<MemeCreation> allMemeCreations = new List<MemeCreation>();
+
+            //Baaaad code
+            List<int> memeImages = new List<int>(int.MaxValue);
+
+            foreach (MemeCreation memeCreation in allMemeCreations)
+            {
+                memeImages[memeCreation.MemeImageId]++;
+            }
+
+            int memeImageIdBadWay = memeImages.IndexOf(memeImages.Max());
+
+
+            //Better code
+            Dictionary<int, int> occurencesOfImage = new Dictionary<int, int>();
+            
+            foreach (MemeCreation memeCreation in allMemeCreations)
+            {
+                if(occurencesOfImage.ContainsKey(memeCreation.MemeImageId))
+                {
+                    occurencesOfImage[memeCreation.MemeImageId]++;
+                }
+                else
+                {
+                    occurencesOfImage.Add(memeCreation.MemeImageId, 1);
+                }
+            }
+
+            //The Id of the most used Image is:
+            int memeImageIdBetterWay = occurencesOfImage.Max().Key;
+
+        }
         public List<MemeImage> GetAllMemeImages()
         {
             List<MemeImage> memeImages = new List<MemeImage>();
