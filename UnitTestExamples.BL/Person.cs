@@ -10,6 +10,15 @@ namespace UnitTestExamples.BL
         private string cpr;
         #endregion
 
+        
+
+        public Person(string name, string cpr)
+        {
+            Name = name;
+            Cpr = cpr;
+            Console.WriteLine(ToString());
+        }
+
         #region Properties
         public string Name
         {
@@ -28,7 +37,7 @@ namespace UnitTestExamples.BL
         {
             get
             {
-                if (!string.IsNullOrWhiteSpace(cpr))
+                if (!string.IsNullOrWhiteSpace(cpr) && Cpr.Length >= 6)
                 {
                     string datePartOfCprWithDash = $"{cpr[0]}{cpr[1]}-{cpr[2]}{cpr[3]}-{cpr[4]}{cpr[5]}";
 
@@ -94,7 +103,7 @@ namespace UnitTestExamples.BL
 
             if (result.Date > DateTime.Today)
                 return (false, "Birthday cannot be in the future");
-            throw new NotImplementedException();
+            return (true, "");
         }
         public static (bool isValid, string errMsg) ValidateName(string value)
         {
@@ -112,6 +121,26 @@ namespace UnitTestExamples.BL
 
             return (true, "");
         }
+
+        public int CompareTo(Person other)
+        {
+            if (other != null)
+            {
+                return DateTime.Compare(Birthday, other.Birthday);
+            }
+            else
+                return 1;
+        }
         #endregion
+
+        public virtual string CreateIdentifier()
+        {
+            return Cpr;
+        }
+
+        public override string ToString()
+        {
+            return $"My name is: {Name}";
+        }
     }
 }

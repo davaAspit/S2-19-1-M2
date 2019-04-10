@@ -2,10 +2,40 @@
 using System.Collections.Generic;
 using System.Text;
 
+namespace System
+{
+    public partial class Convert
+    {
+        public static int ToByteFromMegaByte(int megaByte)
+        {
+            return megaByte * 1024 * 1024;
+        }
+    }
+}
+
 namespace UnitTestExamples.BL
 {
-    public class Car
+    public class Car : IComparable<Car>
     {
+        public int ProductionYear { get; set; }
+        public string Model { get; set; }
+
+        public int CompareTo(Car other)
+        {
+            // If other is not a valid object reference, this instance is greater.
+            if (other is null) return 1;
+
+            //If the ProductionYear is the same
+            if (ProductionYear == other.ProductionYear)
+                return Model.CompareTo(other.Model);
+
+            // The car comparison depends on the comparison of 
+            // the underlying int values for production year. 
+            return ProductionYear.CompareTo(other.ProductionYear);
+        }
+    }
+    public class Car2
+    { 
         private string make;
         private decimal priceTag;
 

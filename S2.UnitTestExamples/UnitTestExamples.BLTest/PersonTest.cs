@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnitTestExamples.BL;
 using Xunit;
 
@@ -6,6 +7,35 @@ namespace UnitTestExamples.BLTest
 {
     public class PersonTest
     {
+        [Fact]
+        public void CompareTo_SortList()
+        {
+            Person p1 = new Person()
+            {
+                Cpr = "0311891234",
+                Name = "Daniel Valsby-Koch"
+            };
+            Person p2 = new Person()
+            {
+                Cpr = "0211891234",
+                Name = "Anders Jensen"
+            };
+            Person p3 = new Person()
+            {
+                Cpr = "0411891234",
+                Name = "Erik Gren"
+            };
+            List<Person> persons = new List<Person>()
+            {
+                p1,
+                p2,
+                p3
+            };
+
+            persons.Sort();
+
+            Assert.Equal(p2, persons[0]);
+        }
         [Fact]
         public void ValidateName_CorrectValueShouldReturnTrue()
         {
@@ -59,32 +89,23 @@ namespace UnitTestExamples.BLTest
             //Act
             Assert.Throws<ArgumentException>(() => p.Name = invalidName);
         }
-        [Fact]
-        public void NameSet_ValidValuesShouldBeSaved()
+
+        [Theory]
+        [InlineData("daniel vaLsby-koch")]
+        [InlineData("Ea Trea")]
+        [InlineData("Jens Larsen")]
+        public void SetName_ValidValuesShouldNotBeChanged(string inputName)
         {
             //Arrange
-            string validName = "Daniel Koch";
             Person p = new Person();
 
             //Act
-            p.Name = validName;
+            p.Name = inputName;
             string actualName = p.Name;
 
             //Assert
-            Assert.Equal(validName, actualName);
+            Assert.Equal(inputName, actualName);
         }
-        //[Fact]
-        //public void BirthdaySet_InvalidValuesShouldCastException()
-        //{
-        //    //Arrange
-        //    DateTime invalidBirthday = DateTime.Today.AddDays(1);
-        //    Person p = new Person();
 
-        //    //Act
-        //    Assert.Throws<ArgumentException>(() => p.Birthday = invalidBirthday);
-            
-        //    //Assert
-
-        //}
     }
 }

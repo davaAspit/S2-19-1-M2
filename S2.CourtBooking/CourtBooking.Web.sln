@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourtBooking.Web", "CourtBooking.Web\CourtBooking.Web.csproj", "{F7FD642D-01E9-475B-86DF-92AD43161D4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourtBooking.Web", "CourtBooking.Web\CourtBooking.Web.csproj", "{F7FD642D-01E9-475B-86DF-92AD43161D4B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourtBooking.Api", "CourtBooking.Api\CourtBooking.Api.csproj", "{966F3137-2079-4FB4-9168-107598C254B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourtBooking.Data", "CourtBooking.Data\CourtBooking.Data.csproj", "{ED75F04A-7580-481F-AF2F-DD5233C966DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{F7FD642D-01E9-475B-86DF-92AD43161D4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7FD642D-01E9-475B-86DF-92AD43161D4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7FD642D-01E9-475B-86DF-92AD43161D4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{966F3137-2079-4FB4-9168-107598C254B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{966F3137-2079-4FB4-9168-107598C254B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{966F3137-2079-4FB4-9168-107598C254B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{966F3137-2079-4FB4-9168-107598C254B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED75F04A-7580-481F-AF2F-DD5233C966DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED75F04A-7580-481F-AF2F-DD5233C966DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED75F04A-7580-481F-AF2F-DD5233C966DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED75F04A-7580-481F-AF2F-DD5233C966DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
